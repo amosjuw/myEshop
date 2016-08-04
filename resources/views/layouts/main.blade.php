@@ -115,7 +115,7 @@
 								<li><a href="{{url("/")}}" class="active">Home</a></li>
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
+                                        <li><a href="{{url("/shop")}}">Products</a></li>
 					<li><a href="{{url("/product-details")}}">Product Details</a></li> 
 <!--					<li><a href="checkout.html">Checkout</a></li> 
 					<li><a href="cart.html">Cart</a></li> 
@@ -295,7 +295,7 @@
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+					<p class="pull-left">Copyright © {{date("y")}} E-SHOPPER Inc. All rights reserved.</p>
 					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
 				</div>
 			</div>

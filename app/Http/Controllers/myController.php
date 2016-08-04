@@ -64,4 +64,8 @@ class myController extends Controller
     {
         return "簽出";
     }
+    public function shop()
+    {
+        return view("shop");
+    }
 }

@@ -42,4 +42,6 @@ Route::get('/cart', "myController@cart");
 Route::get('/checkout', "myController@checkout");
 Route::get('/product-details', "myController@p_details");
 
+Route::get('/shop', "myController@shop");
+
 
