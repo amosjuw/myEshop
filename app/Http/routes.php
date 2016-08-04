@@ -17,7 +17,7 @@
 
 Route::get('/', "myController@index");
 
-Route::get('/contact_us', "myController@contact_us");
+Route::get('/contact-us', "myController@contact_us");
 
 Route::get('/login', "myController@login");
 
@@ -32,6 +32,7 @@ Route::get('/products/brands', "myController@products_brands");
 Route::get('/products/details/{id}', "myController@products_details");
 
 Route::get('/blog', "myController@blog");
+Route::get('/blog-single', "myController@blog_single");
 
 Route::get('/blog/post/{id}', "myController@blog_post");//
 
@@ -40,6 +41,7 @@ Route::get('/search/{keyword}', "myController@search");
 Route::get('/cart', "myController@cart");
 
 Route::get('/checkout', "myController@checkout");
+
 Route::get('/product-details', "myController@p_details");
 
 Route::get('/shop', "myController@shop");

@@ -15,12 +15,12 @@ class myController extends Controller
 
     public function contact_us()
     {
-        return "聯絡我們";
+        return view("contact-us");
     }
     
     public function login()
     {
-        return "登入";
+        return view("login");
     }
     
     public function logout()
@@ -46,7 +46,11 @@ class myController extends Controller
     }
     public function blog()
     {
-        return "部落格";
+        return view("blog");
+    }
+    public function blog_single()
+    {
+        return view("blog-single");
     }
     public function blog_post()
     {
@@ -58,11 +62,11 @@ class myController extends Controller
     }
     public function cart()
     {
-        return "購物車";
+        return view("cart");
     }
     public function checkout()
     {
-        return "簽出";
+        return view("checkout");
     }
     public function shop()
     {
