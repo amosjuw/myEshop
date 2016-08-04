@@ -40,9 +40,9 @@ class myController extends Controller
     {
         return "產品品牌";
     }
-    public function products_details()
+    public function p_details()
     {
-        return "產品細節";
+        return view("product-details");
     }
     public function blog()
     {

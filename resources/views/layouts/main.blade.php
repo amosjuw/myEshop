@@ -65,9 +65,9 @@
 									USA
 									<span class="caret"></span>
 								</button>
-								<ul class="dropdown-menu">
+<!--								<ul class="dropdown-menu">
 									<li><a href="#">Canada</a></li>
-									<li><a href="#">UK</a></li>
+									<li><a href="#">UK</a></li>-->
 								</ul>
 							</div>
 							
@@ -87,7 +87,7 @@
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+<!--								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
@@ -116,10 +116,10 @@
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-<!--										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> -->
+					<li><a href="{{url("/product-details")}}">Product Details</a></li> 
+<!--					<li><a href="checkout.html">Checkout</a></li> 
+					<li><a href="cart.html">Cart</a></li> 
+					<li><a href="login.html">Login</a></li> -->
                                     </ul>
 <!--                                </li> 
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
