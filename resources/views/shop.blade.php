@@ -42,7 +42,7 @@
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<div class="product-image-wrapper">
+<!--							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
 										<img src="images/shop/product11.jpg" alt="" />
@@ -64,7 +64,7 @@
 										<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
 									</ul>
 								</div>
-							</div>
+							</div>-->
 						</div>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">

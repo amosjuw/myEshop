@@ -115,8 +115,8 @@
 								<li><a href="{{url("/")}}" class="active">Home</a></li>
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="{{url("/shop")}}">Products</a></li>
-					<li><a href="{{url("/product-details")}}">Product Details</a></li> 
+                                        <li><a href="{{url("shop")}}">Products</a></li>
+					<li><a href="{{url("product-details")}}">Product Details</a></li> 
 <!--					<li><a href="checkout.html">Checkout</a></li> 
 					<li><a href="cart.html">Cart</a></li> 
 					<li><a href="login.html">Login</a></li> -->
