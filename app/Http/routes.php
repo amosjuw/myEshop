@@ -1,5 +1,5 @@
 <?php
-
+use \App\Product;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -46,4 +46,37 @@ Route::get('/product-details', "myController@p_details");
 
 Route::get('/shop', "myController@shop");
 
+//Route::post("/cart/add", "myController@cart_add");
+Route::post("/cart/add", "myController@cart");
+Route::post("/cart", "myController@cart");
 
+
+
+
+Route::get('/test/write', function (){
+    $product = new \App\Product();
+    $product->create(["name"=>"ghj", "title"=>"lkjh"]);
+});
+
+Route::get('/test/read', function (){
+    $product = new \App\Product();
+    $product_datas = $product->all(["brand_id","name"]);
+
+    foreach($product_datas as $product_data)
+    {
+        echo "$product_data->brand_id, $product_data->name, $product_data->title <br>";
+    }
+});
+
+Route::get('/test/update/{id}', function ($id){
+    $product = \App\Product::find($id);
+    $product->name = "更新測試";
+    $product->save();
+    return redirect("/test/read");
+});
+
+Route::get('/test/delete/{id}', function ($id){
+    $product = \App\Product::find($id);
+    $product->delete();
+    return redirect("/test/read");
+});

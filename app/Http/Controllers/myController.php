@@ -5,13 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use ShoppingCart;
 
 class myController extends Controller
 {
+    var $products;
+    var $categories;
+    var $brands;
+
+    public function __construct()
+    {
+        $this->products = \App\Product::all(["id", "name", "price"]);
+        $this->categories = \App\Category::all(["name"]);
+        $this->brands = \App\Brand::all(["name"]);
+    }
+
     public function index()
     {
-        return view("home");
+        return view("home", ["title" => "Home", "products" => $this->products, "categories" => $this->categories, "brands" => $this->brands]);
     }
+    
+//    public function index()
+//    {
+//        return view("home");
+//    }
 
     public function contact_us()
     {
@@ -60,9 +77,10 @@ class myController extends Controller
     {
         return "搜尋";
     }
-    public function cart()
+    public function cart(Request $request)
     {
-        return view("cart");
+        if($request->isMethod("POST"))
+            return view("cart");
     }
     public function checkout()
     {
@@ -70,6 +88,24 @@ class myController extends Controller
     }
     public function shop()
     {
-        return view("shop");
+        return view("shop",["title" => "Home", "products" => $this->products, "categories" => $this->categories, "brands" => $this->brands]);
+    } 
+    public function cart_add(Request $request)
+    {
+        $product_id = $request->get("product_id");
+        $product = \App\Product::find($product_id);
+
+        ShoppingCart::add(["id" => $product_id,
+                            "name" => $product->name,
+                            "qty" => 1,
+                            "price" => $product->price]);
+
+        $cart = ShoppingCart::content();
+
+        return view("cart", ["cart" => $cart,
+                                "title" => "Cart", "description" => "網頁說明"]);
+        
+        
     }
+
 }
