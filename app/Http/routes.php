@@ -47,7 +47,7 @@ Route::get('/product-details', "myController@p_details");
 Route::get('/shop', "myController@shop");
 
 //Route::post("/cart/add", "myController@cart_add");
-Route::post("/cart/add", "myController@cart");
+Route::post("/cart/add", "myController@cart_add");
 Route::post("/cart", "myController@cart");
 
 

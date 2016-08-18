@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use ShoppingCart;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Redirect;
 
 class myController extends Controller
 {
@@ -79,8 +80,12 @@ class myController extends Controller
     }
     public function cart(Request $request)
     {
-        if($request->isMethod("POST"))
-            return view("cart");
+//        if($request->isMethod("POST"))
+//            return view("cart");
+        if(session()->has('cart_from_server'))
+            $cart = session("cart_from_server");
+
+        return view("cart", ["title" => "Cart", "description" => "網頁說明", "cart" => $cart]);
     }
     public function checkout()
     {
@@ -95,17 +100,17 @@ class myController extends Controller
         $product_id = $request->get("product_id");
         $product = \App\Product::find($product_id);
 
-        ShoppingCart::add(["id" => $product_id,
+        Cart::add(["id" => $product_id,
                             "name" => $product->name,
                             "qty" => 1,
                             "price" => $product->price]);
 
-        $cart = ShoppingCart::content();
+        $cart = Cart::content();
 
-        return view("cart", ["cart" => $cart,
-                                "title" => "Cart", "description" => "網頁說明"]);
+//        return view("cart", ["cart" => $cart,
+//                                "title" => "Cart", "description" => "網頁說明"]);
         
-        
+        return Redirect::to("cart")->with(["cart_from_server" => $cart, "title" => "Cart", "description" => "網頁說明"]);
     }
-
+   
 }
