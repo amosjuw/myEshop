@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+//use Illuminate\Http\Request;
+use Request;
 use App\Http\Requests;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Redirect;
+
 
 class myController extends Controller
 {
@@ -60,7 +61,11 @@ class myController extends Controller
     }
     public function p_details()
     {
-        return view("product-details");
+        return view("product-details", ["title" => "product-details","products" => $this->products, "categories" => $this->categories, "brands" => $this->brands]);
+    }
+    public function products_details()
+    {
+        return view("product-details", ["title" => "product-details","products" => $this->products, "categories" => $this->categories, "brands" => $this->brands]);
     }
     public function blog()
     {
@@ -82,11 +87,37 @@ class myController extends Controller
     {
 //        if($request->isMethod("POST"))
 //            return view("cart");
-        if(session()->has('cart_from_server'))
-            $cart = session("cart_from_server");
+//        if(session()->has('cart_from_server'))
+//            $cart = session("cart_from_server");
+        if (Request::isMethod('post')) {
+            $product_id = Request::get('product_id');
+            $product = Product::find($product_id);
+            Cart::add(array('id' => $product_id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price));
+        }    
+        if( Request::get("product_id") && (Request::get("add") == 1))
+        {
+            $items = Cart::Search(function ($cartItem, $rowId) { return $cartItem->id == Request::get("product_id");});
+            Cart::update($items->first()->rowId, $items->first()->qty + 1);
+        }
 
+        if( Request::get("product_id") && (Request::get("minus") == 1))
+        {
+            $items = Cart::Search(function ($cartItem, $rowId) { return $cartItem->id == Request::get("product_id");});
+            Cart::update($items->first()->rowId, $items->first()->qty - 1);
+        }
+        if( Request::get("product_id") && (Request::get("clear") == 1))
+        {
+            $items = Cart::Search(function ($cartItem, $rowId) { return $cartItem->id == Request::get("product_id");});
+            Cart::remove($items->first()->rowId);
+        }
+        $cart = Cart::content();
         return view("cart", ["title" => "Cart", "description" => "網頁說明", "cart" => $cart]);
     }
+    public function clear_cart(){
+        Cart::destroy();
+        return Redirect::to("cart");
+    }
+    
     public function checkout()
     {
         return view("checkout");
@@ -97,7 +128,7 @@ class myController extends Controller
     } 
     public function cart_add(Request $request)
     {
-        $product_id = $request->get("product_id");
+        $product_id = Request::get("product_id");
         $product = \App\Product::find($product_id);
 
         Cart::add(["id" => $product_id,

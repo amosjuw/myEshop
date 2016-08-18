@@ -30,7 +30,7 @@ Route::get('/products/category', "myController@products_category");
 Route::get('/products/brands', "myController@products_brands");
 
 Route::get('/products/details/{id}', "myController@products_details");
-
+Route::get('/shop/details/{id}', "myController@products_details");
 Route::get('/blog', "myController@blog");
 Route::get('/blog-single', "myController@blog_single");
 
@@ -48,7 +48,9 @@ Route::get('/shop', "myController@shop");
 
 //Route::post("/cart/add", "myController@cart_add");
 Route::post("/cart/add", "myController@cart_add");
-Route::post("/cart", "myController@cart");
+Route::post("/cart", "myController@cart_add");
+
+Route::get("/clear_cart" , "myController@clear_cart");
 
 
 

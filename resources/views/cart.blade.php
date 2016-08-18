@@ -36,16 +36,16 @@
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
+									<a class="cart_quantity_up" href="{{url("cart?product_id=$item->id&add=1")}}"> + </a>
 									<input class="cart_quantity_input" type="text" name="quantity" value="{{$item->qty}}" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
+									<a class="cart_quantity_down" href="{{url("cart?product_id=$item->id&minus=1")}}"> - </a>
 								</div>
 							</td>
 							<td class="cart_total">
 								<p class="cart_total_price">${{$item->subtotal}}</p>
 							</td>
 							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+								<a class="cart_quantity_delete" href="{{url("cart?product_id=$item->id&clear=1")}}"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
                                                 @endforeach
@@ -169,12 +169,12 @@
 				<div class="col-sm-6">
 					<div class="total_area">
 						<ul>
-							<li>Cart Sub Total <span>$59</span></li>
-							<li>Eco Tax <span>$2</span></li>
+							<li>Cart Sub Total <span>${{Cart::total()}}</span></li>
+							<li>Eco Tax <span>${{Cart::tax()}}</span></li>
 							<li>Shipping Cost <span>Free</span></li>
-							<li>Total <span>$61</span></li>
+							<li>Total <span>${{Cart::total()}}</span></li>
 						</ul>
-							<a class="btn btn-default update" href="">Update</a>
+							<a class="btn btn-default update" href="{{url("clear_cart")}}">Clear All</a>
 							<a class="btn btn-default check_out" href="">Check Out</a>
 					</div>
 				</div>
